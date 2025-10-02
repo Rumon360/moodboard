@@ -4,6 +4,7 @@ import React from "react";
 import { ClerkProvider, useAuth } from "@clerk/nextjs";
 import { ConvexReactClient } from "convex/react";
 import { ConvexProviderWithClerk } from "convex/react-clerk";
+import AuthWrapper from "@/components/wrappers/auth-wrapper";
 
 interface ConvexClientProviderProps {
   children: React.ReactNode;
@@ -21,7 +22,7 @@ function ConvexClientProvider({ children }: ConvexClientProviderProps) {
   return (
     <ClerkProvider>
       <ConvexProviderWithClerk useAuth={useAuth} client={convex}>
-        {children}
+        <AuthWrapper>{children}</AuthWrapper>
       </ConvexProviderWithClerk>
     </ClerkProvider>
   );
