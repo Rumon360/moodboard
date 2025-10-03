@@ -23,6 +23,7 @@ function InviteButton() {
           <DialogTitle>Invite Memebers</DialogTitle>
         </DialogHeader>
         <OrganizationProfile
+          routing="hash"
           appearance={{
             variables: { colorShadow: "none" },
             elements: {
