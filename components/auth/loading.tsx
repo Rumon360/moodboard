@@ -7,8 +7,8 @@ function Loading() {
       <Image
         src={"/images/logo.svg"}
         alt="logo"
-        width={120}
-        height={120}
+        width={100}
+        height={100}
         className="animate-pulse duration-700"
       />
     </div>
