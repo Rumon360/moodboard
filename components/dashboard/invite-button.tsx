@@ -1,5 +1,11 @@
 import React from "react";
-import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../ui/dialog";
 import { Button } from "../ui/button";
 import { Plus } from "lucide-react";
 import { OrganizationProfile } from "@clerk/nextjs";
@@ -13,6 +19,9 @@ function InviteButton() {
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-[calc(100%-2rem)] lg:max-w-4xl w-full p-0 border-none shadow-none">
+        <DialogHeader hidden>
+          <DialogTitle>Invite Memebers</DialogTitle>
+        </DialogHeader>
         <OrganizationProfile
           appearance={{
             variables: { colorShadow: "none" },

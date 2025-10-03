@@ -1,7 +1,13 @@
 "use client";
 
 import Hint from "@/components/hint";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { CreateOrganization } from "@clerk/nextjs";
 import { PlusIcon } from "lucide-react";
 
@@ -22,6 +28,9 @@ function NewButton() {
       </Hint>
 
       <DialogContent className="max-w-[calc(100%-2rem)] lg:max-w-lg w-full p-0 border-none shadow-none">
+        <DialogHeader hidden>
+          <DialogTitle>Create Organization</DialogTitle>
+        </DialogHeader>
         <CreateOrganization
           appearance={{
             variables: { colorShadow: "none" },
