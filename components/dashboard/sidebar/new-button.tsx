@@ -8,18 +8,18 @@ import { PlusIcon } from "lucide-react";
 function NewButton() {
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Hint
-          label="Create Organization"
-          side="right"
-          align="start"
-          sideOffset={10}
-        >
+      <Hint
+        label="Create Organization"
+        side="right"
+        align="start"
+        sideOffset={10}
+      >
+        <DialogTrigger asChild>
           <button className="aspect-square bg-white/25 flex justify-center items-center rounded-md opacity-60 hover:opacity-100 transition">
             <PlusIcon className="text-white" />
           </button>
-        </Hint>
-      </DialogTrigger>
+        </DialogTrigger>
+      </Hint>
 
       <DialogContent className="max-w-[calc(100%-2rem)] lg:max-w-lg w-full p-0 border-none shadow-none">
         <CreateOrganization
