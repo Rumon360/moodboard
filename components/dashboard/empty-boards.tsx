@@ -2,11 +2,12 @@
 
 import Image from "next/image";
 import React from "react";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 
 import { api } from "@/convex/_generated/api";
 import { useOrganization } from "@clerk/nextjs";
 import useApiMutation from "@/hooks/use-api-mutation";
+import { toast } from "sonner";
 
 function EmptyBoards() {
   const { organization } = useOrganization();
@@ -18,7 +19,14 @@ function EmptyBoards() {
     mutate({
       title: "Untitled",
       orgId: organization.id,
-    });
+    })
+      .then((id) => {
+        console.log(id);
+        toast.success("Board Created");
+      })
+      .catch(() => {
+        toast.error("Failed to create board");
+      });
   };
 
   return (
