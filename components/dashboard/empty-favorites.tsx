@@ -1,0 +1,22 @@
+import Image from "next/image";
+import React from "react";
+
+function EmptyFavorites() {
+  return (
+    <div className="h-full flex flex-col justify-center items-center">
+      <Image
+        src={"/images/empty-favorites.svg"}
+        alt="Empty Favorites"
+        height={140}
+        width={140}
+      />
+
+      <h2 className="text-2xl pt-6 font-semibold">No favorite boards!</h2>
+      <p className="text-muted-foreground text-sm pt-2">
+        Try favoriting a board
+      </p>
+    </div>
+  );
+}
+
+export default EmptyFavorites;
