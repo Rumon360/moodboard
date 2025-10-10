@@ -4,14 +4,15 @@ import Room from "@/components/board/room";
 import React from "react";
 
 interface BoardIdPageProps {
-  params: { boardId: string };
+  params: Promise<{ boardId: string }>;
 }
 
-function BoardPage({ params }: BoardIdPageProps) {
-  return <Loading />;
+async function BoardPage({ params }: BoardIdPageProps) {
+  const { boardId } = await params;
+
   return (
-    <Room roomId={params.boardId} fallback={<Loading />}>
-      <Canvas boardId={params.boardId} />
+    <Room roomId={boardId} fallback={<Loading />}>
+      <Canvas boardId={boardId} />
     </Room>
   );
 }

@@ -20,7 +20,13 @@ function OrgSidebar() {
     <div className="hidden lg:flex flex-col space-y-6 w-[206px] pl-5 pt-5 ">
       <Link href={"/"}>
         <div className="flex items-center gap-x-2">
-          <Image src={"images/logo.svg"} alt="logo" height={40} width={40} />
+          <Image
+            src={"images/logo.svg"}
+            priority
+            alt="logo"
+            height={40}
+            width={40}
+          />
           <span className={cn("font-semibold text-xl", poppins.className)}>
             Moodboard
           </span>
