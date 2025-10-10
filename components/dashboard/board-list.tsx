@@ -10,9 +10,16 @@ import NewBoardButton from "./new-board-button";
 type Props = { orgId: string; searchParams: URLSearchParams };
 
 function BoardList({ orgId, searchParams }: Props) {
-  const data = useQuery(api.boards.get, { orgId });
-  const searchTerm = searchParams.get("search");
-  const isFavorites = searchParams.get("favorites") === "true";
+  const searchTerm = searchParams.get("search") || "";
+  const favorites = searchParams.get("favorites") || "";
+
+  const data = useQuery(api.boards.get, {
+    orgId,
+    search: searchTerm,
+    favorties: favorites,
+  });
+
+  const isFavorites = favorites === "true";
 
   if (data === undefined) {
     return (
