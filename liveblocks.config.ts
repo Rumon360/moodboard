@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { createClient } from "@liveblocks/client";
+import {
+  createClient,
+  LiveList,
+  LiveMap,
+  LiveObject,
+} from "@liveblocks/client";
 import { createRoomContext, createLiveblocksContext } from "@liveblocks/react";
+import { Layer } from "./types/canvas";
 
 const client = createClient({
   authEndpoint: "/api/liveblocks-auth",
@@ -12,13 +18,17 @@ const client = createClient({
 // `user.presence` property. Must be JSON-serializable.
 type Presence = {
   cursor: { x: number; y: number } | null;
+  selection: string[];
 };
 
 // Optionally, Storage represents the shared document that persists in the
 // Room, even after all users leave. Fields under Storage typically are
 // LiveList, LiveMap, LiveObject instances, for which updates are
 // automatically persisted and synced to all connected clients.
-type Storage = object;
+type Storage = {
+  layers: LiveMap<string, LiveObject<Layer>>;
+  layerIds: LiveList<string>;
+};
 
 // Optionally, UserMeta represents static/readonly metadata on each user, as
 // provided by your own custom auth back end (if used). Useful for data that
@@ -85,7 +95,7 @@ export const {
     // useUser,
     // useRoomInfo
   },
-} = createRoomContext<Presence, UserMeta>(client);
+} = createRoomContext<Presence, Storage, UserMeta>(client);
 
 // Project-level hooks, use inside `LiveblocksProvider`
 export const {
