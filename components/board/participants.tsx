@@ -2,7 +2,7 @@
 
 import { useOthers, useSelf } from "@/liveblocks.config";
 import UserAvatar from "./user-avatar";
-import { COLORS, connectionIdToColor } from "@/lib/utils";
+import { connectionIdToColor } from "@/lib/utils";
 
 const MAX = 2;
 
@@ -31,11 +31,7 @@ function Participants() {
             src={self.avatar}
             name={`${self?.name} (You)`}
             fallback={self?.name?.[0] || "T"}
-            borderColor={
-              self.connectionId
-                ? connectionIdToColor(self.connectionId as number)
-                : COLORS[Math.floor(Math.random() * COLORS.length)]
-            }
+            borderColor={connectionIdToColor(self.connectionId as number)}
           />
         )}
         {hasMoreUsers && (

@@ -4,12 +4,15 @@ import { createRoomContext, createLiveblocksContext } from "@liveblocks/react";
 
 const client = createClient({
   authEndpoint: "/api/liveblocks-auth",
+  throttle: 16,
 });
 
 // Presence represents the properties that exist on every user in the Room
 // and that will automatically be kept in sync. Accessible through the
 // `user.presence` property. Must be JSON-serializable.
-type Presence = object;
+type Presence = {
+  cursor: { x: number; y: number } | null;
+};
 
 // Optionally, Storage represents the shared document that persists in the
 // Room, even after all users leave. Fields under Storage typically are
@@ -82,7 +85,7 @@ export const {
     // useUser,
     // useRoomInfo
   },
-} = createRoomContext<UserMeta>(client);
+} = createRoomContext<Presence, UserMeta>(client);
 
 // Project-level hooks, use inside `LiveblocksProvider`
 export const {
