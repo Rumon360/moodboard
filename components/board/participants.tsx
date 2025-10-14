@@ -8,7 +8,7 @@ const MAX = 2;
 
 function Participants() {
   const users = useOthers();
-  const self = useSelf((me) => me.info);
+  const self = useSelf().info;
 
   const hasMoreUsers = users.length > MAX;
 
@@ -19,7 +19,7 @@ function Participants() {
           return (
             <UserAvatar
               key={connectionId}
-              src={info?.avatar}
+              src={info?.picture}
               name={info?.name}
               fallback={info?.name?.[0] || "T"}
               borderColor={connectionIdToColor(connectionId)}
@@ -28,7 +28,7 @@ function Participants() {
         })}
         {self && (
           <UserAvatar
-            src={self.avatar}
+            src={self.picture}
             name={`${self?.name} (You)`}
             fallback={self?.name?.[0] || "T"}
             borderColor={connectionIdToColor(self.connectionId as number)}
